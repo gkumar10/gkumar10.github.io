@@ -126,32 +126,12 @@ cfm_rpart</code></pre>
 <p>Out of sample error is 0.5029314. This is the error rate when the method is used on a new data set.</p>
 </div>
 
-<div id="random-forest-rf">
-<h3>
-<a id="random-forest-rf" class="anchor" href="#random-forest-rf" aria-hidden="true"><span class="octicon octicon-link"></span></a>Random Forest (rf)</h3>
-<pre><code>modelFit_rf &lt;- train(classe ~ ., 
-                                    data=training, 
-                                    method="rf", 
-                                    trControl = trainControl(method="cv", number=4)) 
-=======
-## Sensitivity            0.9167  0.26548  0.50950   0.0000  0.45978
-## Specificity            0.6263  0.94532  0.75471   1.0000  0.99938
-## Pos Pred Value         0.4937  0.53805  0.30490      NaN  0.99400
-## Neg Pred Value         0.9498  0.84289  0.87932   0.8361  0.89149
-## Prevalence             0.2845  0.19347  0.17436   0.1639  0.18379
-## Detection Rate         0.2608  0.05136  0.08884   0.0000  0.08450
-## Detection Prevalence   0.5282  0.09546  0.29136   0.0000  0.08501
-## Balanced Accuracy      0.7715  0.60540  0.63211   0.5000  0.72958</code></pre>
-<p>Accuracy of model with rpart method is 0.4854703 or 48.55 %.</p>
-<p>Out of sample error is 0.5145297. This is the error rate when the method is used on a new data set.</p>
-</div>
 
 <div id="random-forest-rf">
 <h3>
 <a id="random-forest-rf-1" class="anchor" href="#random-forest-rf-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Random Forest (rf)</h3>
-<pre><code>#modelFit_rf &lt;- randomForest(classe ~ ., data=training) 
-modelFit_rf &lt;- train(classe ~ ., data=training, method="rf", trControl = trainControl(method="cv", number=4)) 
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master
+<pre><code>
+modelFit_rf <- train(classe ~ ., data=training, method="rf", trControl = trainControl(method="cv", number=4)) 
 prediction_rf &lt;- predict(modelFit_rf, newdata=testing)
 cfm_rf &lt;- confusionMatrix(prediction_rf, testing$classe)
 cfm_rf</code></pre>
@@ -218,17 +198,7 @@ prediction2 &lt;- predict(modelFit_rf, newdata=sub_testing2)
 cfm2 &lt;- confusionMatrix(prediction2, sub_testing2$classe)</code></pre>
 The accuracy of model against testing subset 1 is: 0.9895488 or 98.95 %. Out of sample error is 0.0104512.
 <p>The accuracy of model against testing subset 2 is: 0.9882743 or 98.83 %. Out of sample error is 0.0117257.</p>
-<div id="references">
-<h2>
-<a id="references" class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References:</h2>
-<ol>
-<li>Variable Importance function: <a href="http://topepo.github.io/caret/varimp.html">http://topepo.github.io/caret/varimp.html</a>
-</li>
-<li>Models available in caret: <a href="http://topepo.github.io/caret/bytag.html">http://topepo.github.io/caret/bytag.html</a>
-</li>
-=======
-<p>The accuracy of model against testing subset 1 is: 0.9941371 or 99.41 %. Out of sample error is 0.0058629.</p>
-<p>The accuracy of model against testing subset 2 is: 0.9959215 or 99.59 %. Out of sample error is 0.0040785.</p>
+
 <div id="references">
 <h2>
 <a id="references-1" class="anchor" href="#references-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>References:</h2>
@@ -237,7 +207,6 @@ The accuracy of model against testing subset 1 is: 0.9895488 or 98.95 %. Out of 
 </li>
 <li>Models available in caret: <a href="http://topepo.github.io/caret/bytag.html">http://topepo.github.io/caret/bytag.html</a>
 </li>
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master
 </ol>
 </div>
 
